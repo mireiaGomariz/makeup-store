@@ -1,2 +1,6 @@
-endpoint: https://eu1.prisma.sh/mireia-perez-gomariz-ad0afb/makeup-storee/dev
-datamodel: datamodel.prisma
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: datamodel.graphql
+# secret: ${env:PRISMA_SECRET}
+hooks: 
+  post-deploy:
+    - graphql get-schema -p prisma
